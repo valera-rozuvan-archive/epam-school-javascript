@@ -1,0 +1,54 @@
+<html>
+  <head><title>Test JS</title>
+
+  </head>
+  <body>
+
+    Hello, world!
+
+  <script type="text/javascript">
+    function ready(callback) {
+      if (document.readyState != 'loading'){
+        callback();
+      } else {
+        document.addEventListener('DOMContentLoaded', callback);
+      }
+    }
+
+    function main() {
+      var newCount = 0;
+
+      var counterStorage = function () {
+        var _counter = 0;
+
+        return {
+          increase: function () {
+            _counter += 1;
+          },
+          get: function () {
+            return _counter;
+          }
+        };
+      };
+
+      var counterObj = counterStorage();
+
+      // Increase count of user clicks.
+      counterObj.increase();
+      counterObj.increase();
+      counterObj.increase();
+      counterObj.increase();
+      counterObj.increase();
+      counterObj.increase();
+      counterObj.increase();
+
+      // Show hoe many clicks user made.
+      alert(counterObj.get());
+
+      // ...
+    }
+
+    ready(main);
+  </script>
+  </body>
+</html>
