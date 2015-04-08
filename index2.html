@@ -1,0 +1,70 @@
+<html>
+  <head><title>Test JS</title>
+
+  </head>
+  <body>
+
+    Hello, world!
+
+  <script type="text/javascript">
+    function ready(callback) {
+      if (document.readyState != 'loading'){
+        callback();
+      } else {
+        document.addEventListener('DOMContentLoaded', callback);
+      }
+    }
+
+    function main() {
+      var Car = function (initialColor, initialSpeed) {
+        this.speed = initialSpeed;
+
+        this.color = initialColor;
+
+        this.changeSpeed = function () {
+
+        };
+
+        return {
+          speed: initialSpeed,
+          color: initialColor
+        };
+      };
+
+      var car = {
+        toyota : {
+          VasyasToyota : function () {
+
+          }
+        }
+      };
+
+      var x = new car.toyota.VasyasToyota();
+
+      Car.prototype.changeSpeed = function (newSpeed) {
+        this.speed = newSpeed;
+      };
+
+      var honda = new Car('red', 16);
+      var zhigul = new Car('black', 222);
+
+      alert('Honda speed = ' + honda.speed);
+      alert('Zhigul  speed = ' + zhigul.speed);
+
+      honda.changeSpeed(300);
+      alert('Honda speed = ' + honda.speed);
+
+
+      Car.prototype.changeSpeed = function (newSpeed) {
+        this.speed = 0;
+      };
+
+      delete honda.changeSpeed;
+      honda.changeSpeed(400);
+      alert('Honda speed = ' + honda.speed);
+    }
+
+    ready(main);
+  </script>
+  </body>
+</html>
