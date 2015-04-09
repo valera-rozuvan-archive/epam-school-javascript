@@ -204,7 +204,7 @@ the local version has meaning inside the function in which it is declared.
       antiquities();
       aCentaur += " as seen from a distance by a naive innocent.";
 
-      document.write(aCentaur);
+      alert(aCentaur);
 
       // Output: "a horse with rider, as seen from a distance by a naive innocent."
     }
@@ -220,7 +220,7 @@ shown here.
       function tweak(){
 
           // This prints "undefined", because aNumber is also defined locally below.
-          document.write(aNumber);
+          alert(aNumber);
 
           if (false)
           {
@@ -263,7 +263,7 @@ inner function.
       }
 
       function sendHi(msg) {
-          console.log('Hello ' + msg);
+          alert('Hello ' + msg);
       }
 
       var func = send('Bill');
@@ -306,7 +306,7 @@ Another example of a closure:
       counterObj.increase();
       counterObj.increase();
 
-      // Show hoe many clicks user made.
+      // Show hoe many clicks user made. Should be 7.
       alert(counterObj.get());
 
       // ...
