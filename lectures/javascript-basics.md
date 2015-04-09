@@ -85,3 +85,89 @@ it accept arguments which will provide different behavior.
       // Tell him what programming language he should use.
       outputMessage('You should use JavaScript.');
     }
+
+### For loops
+
+If we want to do something many-many times, for example tell the user 20 times
+that he should save his work periodically, we can do something like this:
+
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+    outputMessage('Please save your files!');
+
+However, this seems rather inefficient, especially if you have to write code to
+do something 1000 times (or more). The `for loop` comes to the rescue!
+
+    function main() {
+      function outputMessage(messageForUser) {
+        alert(messageForUser);
+      }
+
+      // Use a loop. Iterate 20 times.
+      for (var i = 1; i <= 20; i += 1) {
+        outputMessage('Please save your files!');
+      }
+    }
+
+Much better.
+
+### Variables and their types.
+
+In practice you need variables to store the data you are working with. In
+JavaScript there are several types that a variable (data) can be:
+
+- boolean
+- null
+- undefined
+- number
+- string
+- array
+- object
+
+Examples of how to define and store each type in a variable:
+
+    function main() {
+      function outputMessage(messageForUser) {
+        alert(messageForUser);
+      }
+
+      var bool = true;
+
+      var nullVariable = null;
+
+      var undefVar = undefined;
+      var undefVar2;
+
+      var num = -23;
+      var num2 = 45.1;
+
+      var str = 'Hello, world';
+
+      var myArray = ['asfd', 0, null];
+      var myArray2 = [];
+
+      var myObj = {
+        property1: 123,
+        property2: {
+          subProp: 'Hello'
+        }
+      };
+      var myObj2 = {};
+    }
