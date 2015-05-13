@@ -1,0 +1,88 @@
+<html>
+  <head>
+    <title>Sample JavaScript code</title>
+  </head>
+  <body>
+    <div id="some_text">Hello, world</div>
+
+    <script type="text/javascript">
+      // Execute a callback function when DOM is loaded.
+      function ready(callback) {
+        if (document.readyState != 'loading'){
+          callback();
+        } else {
+          document.addEventListener('DOMContentLoaded', callback);
+        }
+      }
+
+      // Main entry point of our code. All sample code should be placed
+      // in this function.
+      function main() {
+        function Iterator(items) {
+          this.currentItem = -1;
+          this.items = items;
+        }
+
+        Iterator.prototype.each = function (callback) {
+          var c1;
+
+          for (c1 = 0; c1 < this.items.length; c1 += 1) {
+            callback(this.items[c1]);
+          }
+
+          return this.items[c1 - 1];
+        };
+
+        Iterator.prototype.next = function (callback) {
+          if (this.currentItem < this.items.length - 1) {
+            this.currentItem += 1;
+            callback(this.items[this.currentItem]);
+
+            return this.items[this.currentItem];
+          }
+        };
+
+        Iterator.prototype.first = function (callback) {
+          var item;
+
+          if (this.items.length >= 1) {
+            item = this.items[0];
+
+            callback(item);
+            return item;
+          }
+        };
+
+        Iterator.prototype.last = function (callback) {
+          var item;
+
+          if (this.items.length >= 1) {
+            item = this.items[this.items.length - 1];
+
+            callback(item);
+            return item;
+          }
+        };
+
+        Iterator.prototype.reset = function () {
+          this.currentItem = -1;
+        };
+
+        var items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var iter = new Iterator(items);
+        var currentItem;
+
+        do {
+          currentItem = iter.next(output);
+        } while (currentItem < 5);
+
+        function output(item) {
+          console.log('item = ', item);
+        }
+      }
+
+      // Call the function main() when DOM is loaded.
+      ready(main);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Sample JavaScript code</title>
+  </head>
+  <body>
+    <div id="some_text">Hello, world</div>
+
+    <script type="text/javascript">
+      // Execute a callback function when DOM is loaded.
+      function ready(callback) {
+        if (document.readyState != 'loading'){
+          callback();
+        } else {
+          document.addEventListener('DOMContentLoaded', callback);
+        }
+      }
+
+      // Main entry point of our code. All sample code should be placed
+      // in this function.
+      function main() {
+        var trigger = events.publish('on click');
+
+        setInterval(function () {
+          var data = {
+            x: 100,
+            y: 200
+          };
+
+          trigger(data);
+        }, 1000);
+
+        var Module = {
+          drawCircle: function (data) {
+            vectorDraw.circle(data.x, data.y);
+          }
+        };
+        var Module2 = {
+          func2: function (data) {
+            console.log(data);
+          },
+          func3: function () {
+            trigger();
+          }
+        };
+
+        var ubscrId = events.subscribe('on click', Module.drawCircle);
+
+        events.subscribe('on click', Module2.func2);
+
+        // ..
+        events.unsubscribe('on click', Module);
+
+        // ...
+
+
+        Module2.func3({});
+      }
+
+      // Call the function main() when DOM is loaded.
+      ready(main);
+    </script>
+  </body>
+</html>

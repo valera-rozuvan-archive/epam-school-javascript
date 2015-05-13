@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Sample JavaScript code</title>
+  </head>
+  <body>
+    <div id="some_text">Hello, world</div>
+
+    <script type="text/javascript">
+      // Execute a callback function when DOM is loaded.
+      function ready(callback) {
+        if (document.readyState != 'loading'){
+          callback();
+        } else {
+          document.addEventListener('DOMContentLoaded', callback);
+        }
+      }
+
+      // Main entry point of our code. All sample code should be placed
+      // in this function.
+      function main() {
+        // Observer JS pattern.
+
+        function Subject() {
+          this.observers = [];
+          this.counter = 0;
+        }
+
+        Subject.prototype.init = function () {
+          var self = this;
+
+          setInterval(function () {
+            // get data from server
+
+            var data = {'as': 'asd'}; // this is data from server
+
+            self.counter += 1;
+            data.counter = self.counter;
+
+            self.updateAllObservers(data);
+          }, 100);
+        };
+
+        Subject.prototype.updateAllObservers = function (data) {
+          var c1, observer;
+
+          for (c1 = 0; c1 < this.observers.length; c1 += 1) {
+            observer = this.observers[c1];
+
+            observer.update(data);
+          }
+        };
+
+        Subject.prototype.subscribe = function (observer) {
+          return this.observers.push(observer) - 1;
+        };
+
+        function Observer() {
+
+        }
+        Observer.prototype.update = function (data) {
+          console.log('data = ', data);
+        };
+
+        var subj1 = new Subject(),
+          obs1 = new Observer();
+
+        subj1.init();
+        subj1.subscribe(obs1);
+      }
+
+      // Call the function main() when DOM is loaded.
+      ready(main);
+    </script>
+  </body>
+</html>
