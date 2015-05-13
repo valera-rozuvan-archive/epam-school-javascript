@@ -12,4 +12,4 @@
 - memento
 - state machine
 
-Please look at appropriate `html` pages in folder `javascript-patterns`.
+Please look at appropriate `html` pages in folder [javascript-patterns](https://github.com/valera-rozuvan/epam-school-javascript/tree/master/lectures/javascript-patterns).
